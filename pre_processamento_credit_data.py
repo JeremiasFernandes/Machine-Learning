@@ -1,5 +1,12 @@
 
 
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Jun 23 16:26:15 2020
+
+@author: Jeremias
+"""
+
 
 import pandas as pd
 import numpy as np
@@ -49,4 +56,13 @@ previsores = scaler.fit_transform(previsores)
 from sklearn.model_selection import train_test_split
 previsore_treinamentos, previsores_teste, classe_treinamento, classe_teste = train_test_split(previsores, classe, test_size = 0.25, random_state = 0) # aqui dividimos a base de dados em 2: base de treinamento, e base de teste. os 2 primeiros parametros são minha base (previsores, e classe), e o 3 é a divisão para teste da minha base, neste caso, dividiu em 25% para teste.
 
+from sklearn.naive_bayes import GaussianNB  # biblioteca do algoritmo do naive bayes
+classificador = GaussianNB()    # criação do objeto
+classificador.fit(previsore_treinamentos, classe_treinamento) # transforma a base em probabilidades, aqui eh onde ocorre o treinamento da maquina
+previsoes = classificador.predict(previsores_teste) 
+
+
                  
+from sklearn.metrics import confusion_matrix, accuracy_score
+precisao =  accuracy_score(classe_teste, previsoes)   # como parametro passo o gabarito (classe_teste) e o resultado da minha previsao.
+matriz = confusion_matrix(classe_teste, previsoes)  

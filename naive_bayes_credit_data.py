@@ -28,12 +28,12 @@ base['age'].mean() # a média do atributo 'age'
 # valores incosistentes irão alterar minha média, apresentando um valor pouco confiável.
 
    
-print(base['age'][base.age > 0].mean()) # agora, printa a média do atributo idade sem os valores iconsistentes, aumentando a confiabilidade do resultado.
+base['age'][base.age > 0].mean() # agora, printa a média do atributo idade sem os valores iconsistentes, aumentando a confiabilidade do resultado.
 base.loc[base['age'] < 0, 'age'] = 40.92 # o segundo atributo 'age' significa que o campo que quero atualizar é o campo 'age', ai passo o valor que irá receber.
-print(base.loc[base['age'] < 0]) 
-print(base['age'].mean()) # mostra a média da base atualizada.
-print(pd.isnull(base['age'])) # mostra um a um dos atributos 'age' do registro, sendo false se o argumento não é nulo (não posssui numero) e true caso for nulo.
-print(base.loc[pd.isnull(base['age'])]) # localiza os atributos nulos do campo 'age'.
+base.loc[base['age'] < 0] 
+base['age'].mean() # mostra a média da base atualizada.
+pd.isnull(base['age']) # mostra um a um dos atributos 'age' do registro, sendo false se o argumento não é nulo (não posssui numero) e true caso for nulo.
+base.loc[pd.isnull(base['age'])] # localiza os atributos nulos do campo 'age'.
 #base.loc[pd.isnull(base['age'])] = 40.92
 
 previsores = base.iloc[:, 1:4].values # cria a variável previsores, onde é armazenado toda informação previsora da minha base, que nesse caso seria "salário(anual), idade e o empréstimo que aquela pessoa fez.

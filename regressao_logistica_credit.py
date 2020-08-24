@@ -4,13 +4,7 @@ import pandas as pd
 import numpy as np
 base = pd.read_csv('credit_data.csv')
    
-# base['age'][base.age > 0].mean() # agora, printa a média do atributo idade sem os valores iconsistentes, aumentando a confiabilidade do resultado.
-# base.loc[base['age'] < 0, 'age'] = 40.92 # o segundo atributo 'age' significa que o campo que quero atualizar é o campo 'age', ai passo o valor que irá receber.
-# base.loc[base['age'] < 0]
-# base['age'].mean() # mostra a média da base atualizada.
-# pd.isnull(base['age']) # mostra um a um dos atributos 'age' do registro, sendo false se o argumento não é nulo (não posssui numero) e true caso for nulo.
-# base.loc[pd.isnull(base['age'])] # localiza os atributos nulos do campo 'age'.
-# #base.loc[pd.isnull(base['age'])] = 40.92
+
 
 previsores = base.iloc[:, 1:4].values # cria a variável previsores, onde é armazenado toda informação previsora da minha base, que nesse caso seria "salário(anual), idade e o empréstimo que aquela pessoa fez.
                                       # o primeiro argumento ":" significa que quero armazenar todas as linhas, e os segundo é os campos que quero armazenar, no caso do campo 1 ao 3 (o 4 é o limite superior, ele não pega o 4 e sim até o 3).
